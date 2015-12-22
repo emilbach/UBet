@@ -1,0 +1,21 @@
+body
+
+.header .col {
+    background-color:ghostwhite;
+}
+
+.col {
+    border: solid 1px grey;
+    border-bottom-style: solid;
+    border-right-style: solid;
+    text-align: center;
+
+}
+
+.col:last-child {
+    border-right: solid 1px grey;
+}
+
+.row:last-child .col {
+    border-bottom: solid 1px grey;
+}

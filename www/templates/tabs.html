@@ -1,0 +1,29 @@
+<!--
+Create tabs with an icon and label, using the tabs-positive style.
+Each tab's child <ion-nav-view> directive will have its own
+navigation history that also transitions its views in and out.
+-->
+<ion-tabs class="tabs-icon-bottom tabs-color-active-positive">
+
+  <!-- News Feed Tab -->
+  <ion-tab title="News Feed" icon-off="ion-ios-list-outline" icon-on="ion-ios-list" href="#/tab/news">
+    <ion-nav-view name="tab-news"></ion-nav-view>
+  </ion-tab>
+
+  <!-- Chats Tab -->
+  <ion-tab title="Statistics" icon-off="ion-android-clipboard" icon-on="ion-android-clipboard" href="#/tab/statistics">
+    <ion-nav-view name="tab-statistics"></ion-nav-view>
+  </ion-tab>
+
+  <!-- Account Tab -->
+  <ion-tab title="Matches" icon-off="ion-ios-football-outline" icon-on="ion-ios-football" href="#/tab/matches">
+    <ion-nav-view name="tab-matches"></ion-nav-view>
+  </ion-tab>
+
+  <!-- Bet Tab -->
+  <ion-tab title="Bet" icon-off="ion-ios-compose-outline" icon-on="ion-ios-compose" href="#/tab/bet">
+    <ion-nav-view name="tab-bet"></ion-nav-view>
+  </ion-tab>
+
+
+</ion-tabs>

@@ -1,0 +1,35 @@
+<ion-view view-title="News Feed">
+    <ion-content ng-controller="NewsCtrl">
+
+        <ion-refresher
+                pulling-text="Pull to refresh..."
+                on-refresh="loadData()">
+        </ion-refresher>
+
+        <div class="list">
+            <label class="item item-input item-select">
+                <div class="input-label">
+                    Order by
+                </div>
+                <select ng-model="data.newstype">
+                    <option value="Latest">Latest</option>
+                    <option value="Recent">Recent</option>
+                    <option value="Older">Older</option>
+                </select>
+            </label>
+        </div>
+        <div ng-repeat="story in filtered = (newsarr | orderBy: ['id','time'] | filter: {newstype: data.newstype})" class="card trip">
+            <div class="item item-divider">
+                {{story.newstype}} - {{story.time}}
+            </div>
+            <div class="item item-text-wrap">
+                {{story.newsdesc}}
+            </div>
+        </div>
+
+        <ion-infinite-scroll
+                on-infinite="loadData()"
+                distance="2%">
+        </ion-infinite-scroll>
+    </ion-content>
+</ion-view>
