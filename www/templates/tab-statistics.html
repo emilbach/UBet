@@ -1,15 +1,9 @@
 <ion-view view-title="Statistics">
-    <body ng-controller="StatisticsCtrl">
     <ion-content>
-        <div class="row responsive-sm body">
-            <div align="center" class="col">Group A</div>
-        </div>
-        <div class="row header" >
-            <div class="col col-20">Rank</div>
-            <div class="col">Club</div>
-            <div class="col col-10">P</div>
-            <div class="col col-20">Pts</div>
-        </div>
+        <ion-list>
+      		<ion-item ng-repeat="team in teams"
+                href="#/tab/statistics/{{team.id}}">{{team.name}}
+       		</ion-item>
+    	</ion-list>                
     </ion-content>
-    </body>
 </ion-view>
