@@ -1,16 +1,26 @@
 <ion-view view-title="Matches">
-    <ion-content ng-controller="MatchesCtrl">
+    <ion-content>
       <ion-scroll direction="x" class="wide-as-needed">
-          <div  class="row header">
-              <div class="col col-10">ID</div>
-              <div class="col col-10">Day</div>
-              <div class="col col-20">Time</div>
-              <div class="col col-50">Home</div>
-	  	        <div class="col col-50">Away</div>
-              <div class="col col-10">1</div>
-	  	        <div class="col col-10">X</div>
-	  	        <div class="col col-10">2</div>
-          </div>
+         <table>
+            <tr>
+              <th>ID</th>
+              <th>Day</th>
+              <th>Time</th>
+              <th>Home/Away</th>
+              <th>1</th>
+              <th>X</th>
+              <th>2</th>
+            </tr>
+            <tr ng-repeat="match in matches">
+              <td>{{match.match_id}}</td>
+              <td>{{match.day}}</td>
+              <td>{{match.time}}</td>
+              <td>{{match.names}}</td>
+              <td>{{match.one}}</td>
+              <td>{{match.draw}}</td>
+              <td>{{match.two}}</td>
+            </tr>
+          </table>
       </ion-scroll>
     </ion-content>
 </ion-view>

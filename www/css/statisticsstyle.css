@@ -1,21 +1,13 @@
-body
-
-.header .col {
-    background-color:ghostwhite;
+table, td, th {    
+    border: 1px solid #ddd;
+    text-align: left;
 }
 
-.col {
-    border: solid 1px grey;
-    border-bottom-style: solid;
-    border-right-style: solid;
-    text-align: center;
-
+table {
+    border-collapse: collapse;
+    width: 65%;
 }
 
-.col:last-child {
-    border-right: solid 1px grey;
-}
-
-.row:last-child .col {
-    border-bottom: solid 1px grey;
+th, td {
+    padding: 15px;
 }
