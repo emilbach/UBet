@@ -11,10 +11,17 @@ var app = angular.module('starter', ['ionic', 'ngCordova'])
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+    if(window.Connection){
+      if(navigator.connection.type == Connection.NONE){
+        alert('Connect to internet and restart the app!');
+      }
+    }
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+
+  $ionicConfigProvider.backButton.icon('ion-chevron-left')
 
   $stateProvider
 
