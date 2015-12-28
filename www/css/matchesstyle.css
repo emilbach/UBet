@@ -1,5 +1,6 @@
 .wide-as-needed {
-  overflow: scroll;
+  overflow-x: scroll;
+  overflow-y: scroll; 
   white-space: nowrap;
 }
 .scroll { 
@@ -38,7 +39,7 @@
 /* make loading bar slide up/down */
 .bar-loading.ng-enter,
 .bar-loading.ng-leave.ng-leave-active {
-  height: 0;
+  height: 100%;
   border-width: 0px;
 }
 .bar-loading.ng-enter.ng-enter-active,

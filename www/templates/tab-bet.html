@@ -1,5 +1,8 @@
 <ion-view view-title="Bet">
-  <ion-content ng-controller="BetCtrl">
+     <ion-nav-buttons side="secondary">
+      <button class="button button-clear button-positive" ng-click="openModal()">Login</button>
+    </ion-nav-buttons>
+  <ion-content>
     <div class="list list-inset">
       <label class="item item-input">
         <input type="text" placeholder="ID">
@@ -8,11 +11,6 @@
         <input type="text" placeholder="Type">
       </label>
     </div>
-    <button class="button button-block button-positive">
-      Bet
-    </button>
-    <div>
-     <button class="button button-block button-calm" ng-click="openModal()">Login</button>
-    </div>
+    <button class="button button-block button-positive">Bet</button>
   </ion-content>
 </ion-view>
