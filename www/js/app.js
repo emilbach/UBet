@@ -1,6 +1,10 @@
-var app = angular.module('starter', ['ionic', 'ngCordova'])
+var app = angular.module('starter', ['ionic', 'ngCordova', 'ngOpenFB'])
 
-.run(function($ionicPlatform) {
+.run(function($rootScope, $ionicPlatform, $ionicHistory, ngFB) {
+
+ngFB.init({appId: 511438299029058});
+
+  
   $ionicPlatform.ready(function() {
     if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -13,10 +17,32 @@ var app = angular.module('starter', ['ionic', 'ngCordova'])
     }
     if(window.Connection){
       if(navigator.connection.type == Connection.NONE){
-        alert('Connect to internet and restart the app!');
+        window.plugins.toast.showLongCenter(
+        "No internet connection!"
+        );
       }
     }
   });
+  $ionicPlatform.registerBackButtonAction(function(e){
+    if ($rootScope.backButtonPressedOnceToExit) {
+      ionic.Platform.exitApp();
+    }
+
+    else if ($ionicHistory.backView()) {
+      $ionicHistory.goBack();
+    }
+    else {
+      $rootScope.backButtonPressedOnceToExit = true;
+      window.plugins.toast.showShortBottom(
+        "Press back button again to exit",function(a){},function(b){}
+      );
+      setTimeout(function(){
+        $rootScope.backButtonPressedOnceToExit = false;
+      },2000);
+    }
+    e.preventDefault();
+    return false;
+  },101);
 })
 
 .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
@@ -58,7 +84,7 @@ var app = angular.module('starter', ['ionic', 'ngCordova'])
     url: "/statistics/:id",
     views: {
         'tab-statistics': {
-          templateUrl: "templates/statisticsinfo.html",
+          templateUrl: "templates/side-views/statisticsinfo.html",
           controller: 'StatInfoCtrl'
       }
     }
@@ -79,6 +105,15 @@ var app = angular.module('starter', ['ionic', 'ngCordova'])
           'tab-bet': {
             templateUrl: 'templates/tab-bet.html',
             controller: 'BetCtrl'
+          }
+        }
+      })
+      .state('tab.ticket', {
+        url: '/bet/ticket',
+        views: {
+          'tab-bet': {
+            templateUrl: 'templates/side-views/ticket.html',
+            controller: 'TicketCtrl'
           }
         }
       });

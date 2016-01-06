@@ -1,6 +1,5 @@
 <ion-view view-title="Matches">
-    <ion-content>
-      <ion-scroll direction="xy" class="wide-as-needed">
+    <ion-content overflow-scroll="true" class="wide-as-needed">
          <table>
             <tr>
               <th>ID</th>
@@ -19,10 +18,9 @@
               <td>{{match.home}}</td>
               <td>{{match.away}}</td>
               <td>{{match.one}}</td>
-              <td>{{match.draw}}</td>
+              <td>{{match.X}}</td>
               <td>{{match.two}}</td>
             </tr>
           </table>
-      </ion-scroll>
     </ion-content>
 </ion-view>
