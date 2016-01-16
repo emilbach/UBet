@@ -3,32 +3,32 @@
       <button class="button button-clear button-positive" ng-click="openModal()">Login</button>
     </ion-nav-buttons>
   <ion-content>
-    <form action="" name="betForm" ng-submit="submitBet()">
+    <form action="" name="betForm" ng-disabled="!buttonClicked" ng-click="submitBet()">
                <div class="list">
-                   <label class="item item-input">
-                       <input type="number" placeholder="ID" name="input" ng-model="example.value" min="1001" max="1008" required>
+                   <label class="item item-input item-floating-label">
+                       <span class="input-label">ID</span>
+                       <input type="number" placeholder="ID" name="id" ng-model="data.id" min="1001" max="1008" required>
                    </label>
                    <div role="alert">
-                      <div ng-show="betForm.input.$error.required" class="text-center assertive">ID Required!</div>
-                      <div ng-show="betForm.input.$error.number" class="text-center assertive">Not valid number!</div>
+                      <div ng-if="betForm.id.$error.required" class="text-center assertive">ID Required!</div>
+                      <div ng-if="betForm.id.$error.min" class="text-center assertive">The ID doesn't exist!</div>
+                      <div ng-if="betForm.id.$error.max" class="text-center assertive">The ID doesn't exist!</div>
                    </div>
-                   <label class="item item-input">
-                       <input name="password" placeholder="Type" required maxlength="1" ng-model="data.password" type="password">
+                   <label class="item item-input item-floating-label">
+                       <span class="input-label">Type</span>
+                       <input type="text" placeholder="Type" name="type" ng-model="data.type" minlength="1" maxlength="1" ng- required ng-trim="false">
                    </label>
-                   <div ng-if="betForm.password.$error.maxlength" class="text-center assertive">
-                       Type should contain one character (1, X, 2)
+                   <div role="alert">
+                      <div ng-if="betForm.type.$error.required" class="text-center assertive">Bet Type Required! (1, X, 2)</div>
+                      <div ng-if="betForm.type.$error.minlength" class="text-center assertive">Not a valid bet type!</div>
+                      <div ng-if="betForm.type.$error.maxlength" class="text-center assertive">Not a valid bet type!</div>
                    </div>
                    <button ng-disabled="!betForm.$valid" class="button button-block button-positive">Bet</button>
                </div>
            </form>
-           <div>
-             <ion-item href="#tab/bet/ticket">
-             <b>Your Ticket</b>
-             </ion-item>
-           </div>
-           <div>
-             <ion-item>
-             <b>You are logged in as: {{user.name}}</b>
+           <div ng-hide="tinfo.length == 0">
+             <ion-item href="#tab/bet/{{tinfo.email}}">
+                  {{tinfo.fbname}}'s ticket
              </ion-item>
            </div>
   </ion-content>

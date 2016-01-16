@@ -4,6 +4,9 @@
       		<ion-item ng-repeat="team in teams"
                 href="#/tab/statistics/{{team.id}}">{{team.name}}
        		</ion-item>
-    	</ion-list>                
+    	</ion-list>
+    	<div ng-if="!teams" class="text-center assertive">
+    		<b>Server is down, try again later!</b>
+    	</div>                
     </ion-content>
 </ion-view>

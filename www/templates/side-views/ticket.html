@@ -11,14 +11,14 @@
               <th>Type</th>
               <th>Coefficient</th>
             </tr>
-            <tr ng-repeat="ticket in tickets">
-              <th>{{ticket.match_id}}</th>
-              <th>{{ticket.home}}</th>
-              <th>{{ticket.away}}</th>
-              <th>{{ticket.type}}</th>
-              <th ng-if="ticket.type == 1">{{ticket.one}}</th>
-              <th ng-if="ticket.type == 'X'">{{ticket.X}}</th>
-              <th ng-if="ticket.type == 2">{{ticket.two}}</th>
+            <tr ng-repeat="tc in ticket">
+              <th>{{tc.match_id}}</th>
+              <th>{{tc.home}}</th>
+              <th>{{tc.away}}</th>
+              <th>{{tc.type}}</th>
+              <th ng-if="tc.type == 1">{{tc.one}}</th>
+              <th ng-if="tc.type == 'X'">{{tc.X}}</th>
+              <th ng-if="tc.type == 2">{{tc.two}}</th>
             </tr>
           </table>
     </ion-content>

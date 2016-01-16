@@ -1,5 +1,5 @@
 <ion-view view-title="Matches">
-    <ion-content overflow-scroll="true" class="wide-as-needed">
+    <ion-content overflow-scroll="true" class="wide-as-needed">   
          <table>
             <tr>
               <th>ID</th>
@@ -22,5 +22,8 @@
               <td>{{match.two}}</td>
             </tr>
           </table>
+          <div ng-if="!matches" class="text-center assertive">
+              <b>Server is down, try again later!</b>
+          </div>
     </ion-content>
 </ion-view>

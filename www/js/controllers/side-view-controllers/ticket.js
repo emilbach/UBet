@@ -1,6 +1,6 @@
-app.controller('TicketCtrl',function($scope, TicketService){
+app.controller('TicketCtrl',function($scope, $stateParams, TicketService){
 	
-	TicketService.getTicket().then(function(data){
-		$scope.tickets = data; 
-	})
+	TicketService.getTicketEmail($stateParams.email).then(function(data){
+		$scope.ticket = data;
+	});
 });

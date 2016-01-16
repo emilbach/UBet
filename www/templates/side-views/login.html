@@ -5,9 +5,9 @@
       <button class="button button-clear" ng-click="closeModal()">Close</button>
     </div>
   </ion-header-bar>
-  <ion-content>
+  <ion-content ng-controller="FBCtrl">
         <label class="item">
-            <button class="button icon-left ion-social-facebook button-block button-positive" ng-click="fbLogin()">
+            <button class="button icon-left ion-social-facebook button-block button-positive" ng-disabled="buttonClicked" ng-click="fbLogin()">
                   Login with Facebook
             </button>
         </label>
