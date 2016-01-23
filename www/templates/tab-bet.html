@@ -1,13 +1,17 @@
 <ion-view view-title="Bet">
-     <ion-nav-buttons side="secondary">
+  <ion-nav-buttons side="secondary">
       <button class="button button-clear button-positive" ng-click="openModal()">Login</button>
-    </ion-nav-buttons>
+  </ion-nav-buttons>
   <ion-content>
-    <form action="" name="betForm" ng-disabled="!buttonClicked" ng-click="submitBet()">
+         <ion-refresher
+            pulling-text="Pull to refresh..."
+            on-refresh="loadTicket()">
+        </ion-refresher>
+    <form action="" name="betForm"  ng-click="submitBet()">
                <div class="list">
                    <label class="item item-input item-floating-label">
                        <span class="input-label">ID</span>
-                       <input type="number" placeholder="ID" name="id" ng-model="data.id" min="1001" max="1008" required>
+                       <input type="number" placeholder="ID" name="id" ng-model="data.id" min="1001" max="1008" autocomplete="off" required>
                    </label>
                    <div role="alert">
                       <div ng-if="betForm.id.$error.required" class="text-center assertive">ID Required!</div>
@@ -16,19 +20,19 @@
                    </div>
                    <label class="item item-input item-floating-label">
                        <span class="input-label">Type</span>
-                       <input type="text" placeholder="Type" name="type" ng-model="data.type" minlength="1" maxlength="1" ng- required ng-trim="false">
+                       <input type="text" placeholder="Type" name="type" ng-model="data.type" minlength="1" maxlength="1" ng- required autocomplete="off">
                    </label>
                    <div role="alert">
                       <div ng-if="betForm.type.$error.required" class="text-center assertive">Bet Type Required! (1, X, 2)</div>
                       <div ng-if="betForm.type.$error.minlength" class="text-center assertive">Not a valid bet type!</div>
                       <div ng-if="betForm.type.$error.maxlength" class="text-center assertive">Not a valid bet type!</div>
                    </div>
-                   <button ng-disabled="!betForm.$valid" class="button button-block button-positive">Bet</button>
+                   <button ng-disabled="!betForm.$valid || !buttonClicked" class="button button-block button-positive">Bet</button>
                </div>
            </form>
-           <div ng-hide="tinfo.length == 0">
-             <ion-item href="#tab/bet/{{tinfo.email}}">
-                  {{tinfo.fbname}}'s ticket
+        <div ng-show="!isEmpty">
+             <ion-item href="#tab/bet/{{tinfo[0].email}}">
+                  {{tinfo[0].fbname}}'s ticket
              </ion-item>
            </div>
   </ion-content>

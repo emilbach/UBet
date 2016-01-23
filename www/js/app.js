@@ -25,11 +25,9 @@ ngFB.init({appId: 511438299029058});
        var userEmail = $localstorage.get('UBet.userEmail');
 
         if(typeof userEmail == 'undefined' || userEmail == ''){
-          console.log("Login if you want to bet!");
           window.plugins.toast.showLongBottom("Login if you want to bet!");
         }
         else{
-          console.log("Already logged in!");
           window.plugins.toast.showLongBottom("Already logged in!");
         }
   });

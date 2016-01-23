@@ -1,15 +1,25 @@
 <ion-view>
 <ion-nav-title>
-    Ticket
+    {{ticket[0].fbname}}'s ticket
   </ion-nav-title>
   <ion-content overflow-scroll="true" class="wide-as-needed">
          <table>
             <tr>
-              <th>ID</th>
-              <th>Home</th>
-              <th>Away</th>
-              <th>Type</th>
-              <th>Coefficient</th>
+              <th>
+                <b>ID</b>
+              </th>
+              <th>
+                <b>Home</b>
+              </th>
+              <th>
+                <b>Away</b>
+              </th>
+              <th>
+                <b>Type</b>
+              </th>
+              <th>
+                <b>Coefficient</b>
+              </th>
             </tr>
             <tr ng-repeat="tc in ticket">
               <th>{{tc.match_id}}</th>
@@ -21,5 +31,19 @@
               <th ng-if="tc.type == 2">{{tc.two}}</th>
             </tr>
           </table>
+          <form action="" name="deleteForm" ng-click="deleteBet()">
+               <div class="list">
+                   <label class="item item-input item-floating-label">
+                       <span class="input-label">ID</span>
+                       <input type="number" placeholder="ID" name="id" ng-model="data.id" min="1001" max="1008" autocomplete="off" required>
+                   </label>
+                   <div role="alert">
+                      <div ng-if="deleteForm.id.$error.required" class="text-center assertive">Enter the ID</div>
+                      <div ng-if="deleteForm.id.$error.min" class="text-center assertive">The ID doesn't exist!</div>
+                      <div ng-if="deleteForm.id.$error.max" class="text-center assertive">The ID doesn't exist!</div>
+                   </div>
+                   <button ng-disabled="!deleteForm.$valid" class="button icon-right ion-ios-trash-outline button-block button-assertive">Delete</button>
+               </div>
+          </form>
     </ion-content>
 </ion-view>

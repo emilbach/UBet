@@ -1,4 +1,4 @@
-app.controller('BetCtrl', function($scope, $ionicModal, ngFB, $http, TicketService, $localstorage, UserService) {
+app.controller('BetCtrl', function($scope, $ionicModal, ngFB, $http, TicketService, $localstorage, UserService, $ionicLoading) {
   
   
   $ionicModal.fromTemplateUrl('templates/side-views/login.html', {
@@ -33,15 +33,30 @@ app.controller('BetCtrl', function($scope, $ionicModal, ngFB, $http, TicketServi
         }
       
   };
-
-  var userEmail = $localstorage.get('UBet.userEmail');
-
-        if(typeof userEmail == 'undefined' || userEmail == ''){
-            $scope.tinfo = [];
-        }
-        else{
-            TicketService.getAllTickets().then(function(data){
-                $scope.tinfo = data[0];
-            });
-        }
+  $scope.loadTicket = function(){
+        
+            var userEmail = $localstorage.get('UBet.userEmail');
+            $scope.isEmpty = false;
+            var len = 0;
+             if(typeof userEmail == 'undefined' || userEmail == ''){
+                $scope.isEmpty = true;
+             }
+             else if(typeof userEmail !== 'undefined' || userEmail !== ''){
+                     TicketService.getAllTickets().then(function(data){
+                        $scope.tinfo = data;
+                        len = $scope.tinfo.length;
+                        if(len == 0){
+                          $scope.isEmpty = true;
+                        }
+                        else{
+                          $scope.isEmpty = false;
+                        }
+                     });
+             }
+             else{
+                $scope.isEmpty = true;
+             }
+              $ionicLoading.hide();
+              $scope.$broadcast('scroll.refreshComplete')
+  }
 });

@@ -7,9 +7,14 @@
   </ion-header-bar>
   <ion-content ng-controller="FBCtrl">
         <label class="item">
-            <button class="button icon-left ion-social-facebook button-block button-positive" ng-disabled="buttonClicked" ng-click="fbLogin()">
-                  Login with Facebook
+            <button class="button icon-left ion-social-facebook button-block button-positive" ng-disabled="buttonlogin" ng-click="fbLogin()">
+                  Log In with Facebook
             </button>
+        </label>
+        <label class="item" >
+          <button class="button icon-left ion-social-facebook button-block button-stable" ng-disabled="buttonlogout"  ng-click="logout()">
+                    Log Out
+          </button>
         </label>
       </div>
   </ion-content>

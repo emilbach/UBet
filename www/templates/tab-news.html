@@ -3,13 +3,14 @@
 
         <ion-refresher
                 pulling-text="Pull to refresh..."
+                ng-if="!noMoreItemsAvailable"
                 on-refresh="loadData()">
         </ion-refresher>
 
         <div class="list">
             <label class="item item-input item-select">
                 <div class="input-label">
-                    Order by
+                    <b>Order by</b>
                 </div>
                 <select ng-model="data.newstype">
                     <option value="Latest">Latest</option>
@@ -18,17 +19,21 @@
                 </select>
             </label>
         </div>
-        <div ng-repeat="story in filtered = (newsarr | orderBy: ['id','time'] | filter: {newstype: data.newstype})" class="card trip">
+        <div ng-if="!noMoreItemsAvailable" ng-repeat="story in filtered = (newsarr | orderBy: ['id'] | filter: {newstype: data.newstype})" class="card trip">
             <div class="item item-divider">
-                {{story.newstype}} - {{story.time}}
+                {{story.newstype}}
             </div>
             <div class="item item-text-wrap">
                 {{story.newsdesc}}
             </div>
         </div>
         <ion-infinite-scroll
+                ng-if="!noMoreItemsAvailable"
                 on-infinite="loadData()"
                 distance="1%">
         </ion-infinite-scroll>
+        <div ng-if="noMoreItemsAvailable" class="text-center assertive">
+              <b>Server is down, try again later!</b>
+        </div>
     </ion-content>
 </ion-view>
