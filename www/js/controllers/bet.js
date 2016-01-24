@@ -1,4 +1,4 @@
-app.controller('BetCtrl', function($scope, $ionicModal, ngFB, $http, TicketService, $localstorage, UserService, $ionicLoading) {
+app.controller('BetCtrl', function($scope, $ionicModal, ngFB, TicketService, $localstorage, UserService, $ionicLoading) {
   
   
   $ionicModal.fromTemplateUrl('templates/side-views/login.html', {
@@ -14,8 +14,8 @@ app.controller('BetCtrl', function($scope, $ionicModal, ngFB, $http, TicketServi
     $scope.modal.hide();
   }
   $scope.data = {};
-  $scope.buttonClicked = false;
-  $scope.submitBet = function(id, type, email){
+
+  $scope.submitBet = function(){
 
       var userEmail = $localstorage.get('UBet.userEmail');
 
@@ -27,9 +27,15 @@ app.controller('BetCtrl', function($scope, $ionicModal, ngFB, $http, TicketServi
             UserService.getUser().then(function(data){
                 $scope.data.email = data[0].email;
             }); 
-            $http.post('http://52.30.78.86:3000/api/bet', {id: $scope.data.id, type: $scope.data.type, email: $scope.data.email}).then(function(res){
-                    $scope.data = res.data;
+            obj = {
+              id: $scope.data.id,
+              type: $scope.data.type,
+              email: $scope.data.email
+            };
+            TicketService.enterBet(obj).then(function(data){
+                    $scope.data = data;
                 });
+
         }
       
   };

@@ -1,4 +1,4 @@
-app.controller('MatchesCtrl', function($scope, MatchesService, ) {
+app.controller('MatchesCtrl', function($scope, MatchesService) {
 
 	MatchesService.getMatches().then(function(data){
 		$scope.matches = data;

@@ -14,6 +14,14 @@ app.service('TicketService', function($http){
 						}	
 					});
 		return null;
-		}
+		},
+		removeTicket: function(id) {
+	    	return $http.delete('http://52.30.78.86:3000/api/bet?id=' + id);
+	    },
+	    enterBet: function(obj){
+	    	return $http.post('http://52.30.78.86:3000/api/bet', obj).then(function(res){
+	    		return res.data;
+	    	})
+	    }
 	}
 });

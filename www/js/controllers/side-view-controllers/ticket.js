@@ -1,13 +1,14 @@
-app.controller('TicketCtrl', function ($scope, $stateParams, TicketService, $http){
-	
+app.controller('TicketCtrl', function ($scope, $stateParams, TicketService, $state){
+	function refreshBets() {
 	TicketService.getTicketEmail($stateParams.email).then(function(data){
 		$scope.ticket = data;
 	});
-	$scope.data = {};
-	$scope.deleteBet = function(id){
-		$http.delete('http://52.30.78.86:3000/api/bet', {id: $scope.data.id}).then(function(res){
-              $scope.data = res.data;
-        });
-		
+	}
+	refreshBets();
+	$scope.remove = {};
+	$scope.deleteBet = function(){
+		console.log($scope.remove.id)
+		TicketService.removeTicket($scope.remove.id).then(refreshBets);
+		$state.go('tab-bet');
 	}
 });

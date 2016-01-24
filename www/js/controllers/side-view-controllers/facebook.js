@@ -1,4 +1,4 @@
-app.controller('FBCtrl', function ($scope, $localstorage, $rootScope, $ionicModal, ngFB, $http){
+app.controller('FBCtrl', function ($scope, $localstorage, $rootScope, $ionicModal, ngFB, UserService){
     $scope.data = {};
 	$scope.fbLogin = function () {
         var userEmail = $localstorage.get('UBet.userEmail');
@@ -9,10 +9,15 @@ app.controller('FBCtrl', function ($scope, $localstorage, $rootScope, $ionicModa
                     ngFB.api({
                     path: '/me',
                     params: {fields: 'id,email,name'}
-                    }).then(function (user, uid, fbname, email){
+                    }).then(function (user, userObj){
                             $scope.user = user;
-                            $http.post('http://52.30.78.86:3000/api/users/', {uid: $scope.user.id, fbname: $scope.user.name, email: $scope.user.email}).then(function(res){
-                                $scope.data = res.data;
+                            userObj = {
+                                uid: $scope.user.id, 
+                                fbname: $scope.user.name, 
+                                email: $scope.user.email
+                            };
+                            UserService.saveUser(userObj).then(function(data){
+                                $scope.data = data;
                             });
 
                             var userEmail = user.email;

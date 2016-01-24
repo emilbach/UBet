@@ -7,7 +7,7 @@
             pulling-text="Pull to refresh..."
             on-refresh="loadTicket()">
         </ion-refresher>
-    <form action="" name="betForm"  ng-click="submitBet()">
+    <form action="" name="betForm" ng-click="submitBet()">
                <div class="list">
                    <label class="item item-input item-floating-label">
                        <span class="input-label">ID</span>
@@ -30,10 +30,10 @@
                    <button ng-disabled="!betForm.$valid || !buttonClicked" class="button button-block button-positive">Bet</button>
                </div>
            </form>
-        <div ng-show="!isEmpty">
-             <ion-item href="#tab/bet/{{tinfo[0].email}}">
+        <div ng-hide="isEmpty">
+             <a class="button button-dark icon icon-right ion-chevron-right button-block" href="#tab/bet/{{tinfo[0].email}}">
                   {{tinfo[0].fbname}}'s ticket
-             </ion-item>
+             </a>
            </div>
   </ion-content>
 </ion-view>
