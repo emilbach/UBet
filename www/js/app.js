@@ -1,4 +1,4 @@
-var app = angular.module('starter', ['ionic', 'ngCordova', 'ngOpenFB'])
+var app = angular.module('UBet!', ['ionic', 'ngCordova', 'ngOpenFB'])
 
 .run(function($rootScope, $ionicPlatform, $ionicHistory, ngFB, $localstorage, UserService) {
 

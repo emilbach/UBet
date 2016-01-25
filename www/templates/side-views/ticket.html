@@ -31,19 +31,12 @@
               <th ng-if="tc.type == 2">{{tc.two}}</th>
             </tr>
           </table>
-          <form action="" name="deleteForm" ng-click="deleteBet()">
                <div class="list">
                    <label class="item item-input item-floating-label">
                        <span class="input-label">ID</span>
                        <input type="number" placeholder="ID" name="id" ng-model="remove.id" min="1001" max="1008" autocomplete="off" required>
                    </label>
-                   <div role="alert">
-                      <div ng-if="deleteForm.id.$error.required" class="text-center assertive">Enter the ID</div>
-                      <div ng-if="deleteForm.id.$error.min" class="text-center assertive">The ID doesn't exist!</div>
-                      <div ng-if="deleteForm.id.$error.max" class="text-center assertive">The ID doesn't exist!</div>
-                   </div>
-                   <button ng-disabled="!deleteForm.$valid" class="button icon-right ion-ios-trash-outline button-block button-assertive">Delete</button>
+                   <button class="button icon-right ion-ios-trash-outline button-block button-assertive" ng-click="deleteBet()">Delete</button>
                </div>
-          </form>
     </ion-content>
 </ion-view>

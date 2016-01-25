@@ -27,6 +27,7 @@ app.controller('BetCtrl', function($scope, $ionicModal, ngFB, TicketService, $lo
             UserService.getUser().then(function(data){
                 $scope.data.email = data[0].email;
             }); 
+            
             obj = {
               id: $scope.data.id,
               type: $scope.data.type,

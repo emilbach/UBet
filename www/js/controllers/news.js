@@ -6,7 +6,13 @@ app.controller('NewsCtrl', function($scope, $timeout, $ionicLoading, NewsService
 
     var i=0;  
     var j=0;
-
+    var showLoading = function() {
+    $ionicLoading.show({
+      template: '<i class="ion-load-a"></i>',
+      hideOnStateChange: true
+    });
+  }
+  showLoading();
     $scope.loadData = function () {
         
         NewsService.getNews().then(function(data){

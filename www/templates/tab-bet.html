@@ -7,7 +7,6 @@
             pulling-text="Pull to refresh..."
             on-refresh="loadTicket()">
         </ion-refresher>
-    <form action="" name="betForm" ng-click="submitBet()">
                <div class="list">
                    <label class="item item-input item-floating-label">
                        <span class="input-label">ID</span>
@@ -18,18 +17,13 @@
                       <div ng-if="betForm.id.$error.min" class="text-center assertive">The ID doesn't exist!</div>
                       <div ng-if="betForm.id.$error.max" class="text-center assertive">The ID doesn't exist!</div>
                    </div>
-                   <label class="item item-input item-floating-label">
-                       <span class="input-label">Type</span>
-                       <input type="text" placeholder="Type" name="type" ng-model="data.type" minlength="1" maxlength="1" ng- required autocomplete="off">
-                   </label>
-                   <div role="alert">
-                      <div ng-if="betForm.type.$error.required" class="text-center assertive">Bet Type Required! (1, X, 2)</div>
-                      <div ng-if="betForm.type.$error.minlength" class="text-center assertive">Not a valid bet type!</div>
-                      <div ng-if="betForm.type.$error.maxlength" class="text-center assertive">Not a valid bet type!</div>
+                   <div class="row">
+                      <ion-radio  class="col" value="1" ng-model="data.type">1</ion-radio>
+                      <ion-radio  class="col" value="X" ng-model="data.type">X</ion-radio>
+                      <ion-radio  class="col" value="2" ng-model="data.type">2</ion-radio>
                    </div>
-                   <button ng-disabled="!betForm.$valid || !buttonClicked" class="button button-block button-positive">Bet</button>
+                   <button  class="button button-block button-positive" ng-click="submitBet()">Bet</button>
                </div>
-           </form>
         <div ng-hide="isEmpty">
              <a class="button button-dark icon icon-right ion-chevron-right button-block" href="#tab/bet/{{tinfo[0].email}}">
                   {{tinfo[0].fbname}}'s ticket
